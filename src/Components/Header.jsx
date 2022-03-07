@@ -11,6 +11,7 @@ import {
 import { makeStyles } from "@material-ui/styles";
 import React from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { CryptoState } from "../CryptoContext";
 
 const useStyles = makeStyles(() => ({
 	title: {
@@ -23,6 +24,10 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Header = () => {
+    const {currency, setCurrency } = CryptoState();
+
+    console.log(currency)
+
 	const classes = useStyles();
 	const history = useHistory();
 	const darkTheme = createTheme({
@@ -47,6 +52,8 @@ const Header = () => {
 							Coin Sleuth
 						</Typography>
 						<Select
+                            value={currency}
+                            onChange={e => setCurrency(e.target.value)}
 							variant="outlined"
 							style={{
 								width: 100,
