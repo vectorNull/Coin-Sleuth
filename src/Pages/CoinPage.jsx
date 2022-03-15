@@ -7,7 +7,7 @@ import { CryptoState } from "../CryptoContext";
 import { LinearProgress, makeStyles, Typography } from "@material-ui/core";
 import CoinInfo from "../Components/CoinInfo";
 import { numberWithCommas } from "../Components/CoinsTable";
-import parse from 'html-react-parser'
+import parse from "html-react-parser";
 
 const CoinPage = () => {
 	const { id } = useParams();
@@ -76,7 +76,7 @@ const CoinPage = () => {
 
 	const classes = useStyles();
 
-  if (!coin) return <LinearProgress style={{ backgroundColor: "gold"}} />
+	if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
 
 	return (
 		<div className={classes.container}>
@@ -136,8 +136,11 @@ const CoinPage = () => {
 							{numberWithCommas(
 								coin?.market_data.market_cap[
 									currency.toLowerCase()
-								].toString().slice(0, -6)
-							)}M
+								]
+									.toString()
+									.slice(0, -6)
+							)}
+							M
 						</Typography>
 					</span>
 				</div>
