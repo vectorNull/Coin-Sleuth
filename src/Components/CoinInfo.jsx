@@ -8,7 +8,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { HistoricalChart } from "../config/api";
+import { chartDays } from "../config/data";
 import { CryptoState } from "../CryptoContext";
+import SelectButton from "./SelectButton.jsx";
 
 const CoinInfo = ({ coin }) => {
 	const [historicalData, sethistoricalData] = useState();
@@ -70,7 +72,7 @@ const CoinInfo = ({ coin }) => {
 					<>
 						<Line
 							data={{
-								label: historicalData.map((coin) => {
+								labels: historicalData.map((coin) => {
 									let date = new Date(coin[0]);
 									let time =
 										date.getHours() > 12
@@ -84,10 +86,40 @@ const CoinInfo = ({ coin }) => {
 								}),
 
 								datasets: [
-									{data: historicalData.map(coin => coin[1])}
-								]
+									{
+										data: historicalData.map(
+											(coin) => coin[1]
+										),
+										label: `Price ( Past ${days} Day(s) ) in ${currency}`,
+										borderColor: "#EEBC1D",
+									},
+								],
+							}}
+							options={{
+								elements: {
+									point: {
+										radius: 1,
+									},
+								},
 							}}
 						/>
+						<div
+							style={{
+								display: "flex",
+								marginTop: 20,
+								justifyContent: "space-around",
+								width: "100%",
+							}}
+						>
+							{chartDays.map((day) => (
+								<SelectButton
+									key={day.value}
+									onClick={() => setDays(day.value)} selected={day.value === days}
+								>
+									{day.label}
+								</SelectButton>
+							))}
+						</div>
 					</>
 				)}
 			</div>
