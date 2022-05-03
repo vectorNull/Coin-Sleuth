@@ -1,5 +1,8 @@
 # Coin Sleuth - A Cryptocurrency Price Tracker
 
+![coinSleuth](https://user-images.githubusercontent.com/50179896/166512679-dfd1b1ae-4777-4771-979d-9eefbe2cc1b6.png)
+
+
 [Link to app](https://coin-sleuth.netlify.app/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
